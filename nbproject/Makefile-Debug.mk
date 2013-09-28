@@ -43,7 +43,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/CFishBeta.o \
 	${OBJECTDIR}/CFishSparty.o \
 	${OBJECTDIR}/CFrame.o \
-	${OBJECTDIR}/CItem.o
+	${OBJECTDIR}/CItem.o \
+	${OBJECTDIR}/CReporter.o
 
 
 # C Compiler Flags
@@ -64,11 +65,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/step3
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/step3: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/step3 ${OBJECTFILES} ${LDLIBSOPTIONS} `wx-config --libs`
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1 ${OBJECTFILES} ${LDLIBSOPTIONS} `wx-config --libs`
 
 ${OBJECTDIR}/CApp.o: CApp.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -115,13 +116,18 @@ ${OBJECTDIR}/CItem.o: CItem.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g `wx-config --cppflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/CItem.o CItem.cpp
 
+${OBJECTDIR}/CReporter.o: CReporter.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g `wx-config --cppflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/CReporter.o CReporter.cpp
+
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/step3
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1
 
 # Subprojects
 .clean-subprojects:
