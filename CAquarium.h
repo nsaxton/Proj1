@@ -33,6 +33,7 @@ public:
     CItem *HitTest(int x, int y);
     void MoveToFront(CItem *item);
     void ToggleTrashcan();
+    void ToggleHand();
     bool IsOverTrashcan(int x, int y);
     void DeleteItem(CItem *item);
     int CountBetas();
@@ -52,9 +53,15 @@ public:
 private:
     wxBitmap mBackground;       //!< Background image to use
     wxBitmap mTrashcan;         //!< Trash can image to use
+    wxBitmap mNormNav;         //!< normal navigation image to use
+    wxBitmap mScrollNav;         //!< scrolling hand image to use
     
     //! State of the trashcan
     bool mTrashCanActive;
+   
+    
+    //! bool for navigation setting
+    bool mNavActive;
     
     //! The image cache
     std::map<std::wstring, wxImage> mImageCache;

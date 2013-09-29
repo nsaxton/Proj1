@@ -34,6 +34,13 @@ EVT_LEFT_UP(CFrame::OnMouseMove)
 EVT_TIMER(ID_Timer, CFrame::OnTimer)
 END_EVENT_TABLE()
 
+
+//! Width of the Hand Icon
+const int HandWidth = 68;
+
+//!Height of the Hand Icon
+const int HandHeight = 59;
+
 /*! \brief Default constructor
  *
  * Creates the frame and sets its initial size and name
@@ -212,6 +219,9 @@ void CFrame::OnToggleTrashcan(wxCommandEvent& event)
  */
 void CFrame::OnLeftButtonDown(wxMouseEvent &event)
 {
+    if(event.m_x < HandWidth && event.m_y < 250 + HandHeight/2 && event.m_y > 250 - HandHeight/2)
+    {   mAquarium.ToggleHand();}
+    
     mGrabbedItem = mAquarium.HitTest(event.m_x, event.m_y);
     if (mGrabbedItem != NULL) {
         mAquarium.MoveToFront(mGrabbedItem);

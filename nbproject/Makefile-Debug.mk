@@ -65,11 +65,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1 ${OBJECTFILES} ${LDLIBSOPTIONS} `wx-config --libs`
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk ${OBJECTFILES} ${LDLIBSOPTIONS} `wx-config --libs`
 
 ${OBJECTDIR}/CApp.o: CApp.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -127,7 +127,7 @@ ${OBJECTDIR}/CReporter.o: CReporter.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project1
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk
 
 # Subprojects
 .clean-subprojects:

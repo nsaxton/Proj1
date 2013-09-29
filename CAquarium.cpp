@@ -31,12 +31,19 @@ const int TrashCanHeight = 70;
  */
 CAquarium::CAquarium()
 {
-    if(!mBackground.LoadFile(L"images/background1.png", wxBITMAP_TYPE_PNG))
-        wxMessageBox(L"Failed to open image background1.png");
+    if(!mBackground.LoadFile(L"images/backgroundW.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image backgroundW.png");
     
     if(!mTrashcan.LoadFile(L"images/trashcan.png", wxBITMAP_TYPE_PNG))
         wxMessageBox(L"Failed to open image trashcan.png");
     
+    if(!mNormNav.LoadFile(L"images/nav1.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image nav1.png");
+    
+    if(!mScrollNav.LoadFile(L"images/nav2.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image nav2.png");
+    
+    mNavActive = false;
     mTrashCanActive = false;
 }
 
@@ -65,11 +72,19 @@ void CAquarium::OnDraw(wxDC& dc)
     dc.SetFont(font);
     dc.SetTextForeground(wxColour(255, 255, 255));
     
-    dc.DrawBitmap(mBackground, 0, 0, true);
+    dc.DrawBitmap(mBackground, -100, 0, true);
     dc.DrawText(L"Under the Sea!", 2, 2);
+    dc.DrawText(L"Team Ladyfish!", 350,2);
     
     if(mTrashCanActive)
         dc.DrawBitmap(mTrashcan, 0, 0);
+    
+    if(mNavActive)
+        dc.DrawBitmap(mScrollNav,0,250);
+    else
+        dc.DrawBitmap(mNormNav,0,250);
+    
+    
     
     for(list<CItem *>::iterator t=mItems.begin(); t!=mItems.end(); t++)
     {
@@ -168,6 +183,18 @@ void CAquarium::ToggleTrashcan()
 {
     mTrashCanActive = !mTrashCanActive;
 }
+
+
+/*! \brief Toggles the hand icon
+ *
+ * toggles the hand icon between normal and scroll modes
+ *
+ */
+void CAquarium::ToggleHand()
+{
+    mNavActive = !mNavActive;
+}
+
 
 /*! \brief Detects whether the current item is over the trashcan
  *
