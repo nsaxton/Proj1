@@ -12,6 +12,7 @@
 
 #include <wx/wx.h>
 #include "CAquarium.h"
+#include "CReporter.h"
 
 //! Program main display frame
 class CFrame : public wxFrame
@@ -62,6 +63,9 @@ private:
     
     int mOrigX;
     int mOrigY;
+    
+    //! A reporter window
+    CReporter *mReporter;
 };
 
 #endif	/* CFRAME_H */

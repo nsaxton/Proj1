@@ -117,6 +117,8 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     mCurrentTime = wxGetLocalTimeMillis().GetValue();
     
     mTimer.Start(FrameDuration);
+    
+    mReporter = new CReporter(this);
 }
 
 CFrame::CFrame(const CFrame& orig)
