@@ -14,6 +14,7 @@
 #include <string>
 
 #include "CFish.h"
+#include "CFishVisitor.h"
 
 //! Class that implements a fish of type Sparty
 class CFishSparty : public CFish
@@ -29,6 +30,12 @@ public:
     virtual wxXmlNode *XmlSave();
     
     virtual CItem *Clone();
+    
+    /*! \brief Accepts a fish visitor
+     *
+     * \param visitor The fish visitor to accept
+     */
+    virtual void Accept(CItemVisitor *visitor) {visitor->VisitSparty(this);}
         
 private:
     //! Default constructor (disabled)

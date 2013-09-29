@@ -29,6 +29,12 @@ public:
     virtual wxXmlNode *XmlSave();
     
     virtual CItem *Clone();
+    
+    /*! \brief Accept an item visitor
+     *
+     * \param visitor The item visitor to accept
+     */
+    virtual void Accept(CItemVisitor *visitor) {visitor->VisitCatfish(this);}
         
 private:
     //! Default constructor (disabled)

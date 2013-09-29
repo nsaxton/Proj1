@@ -14,6 +14,7 @@
 #include "CCatfish.h"
 #include "CAquarium.h"
 #include "CFish.h"
+#include "CCountFishVisitor.h"
 
 using namespace std;
 
@@ -283,17 +284,14 @@ void CAquarium::DeleteItem(CItem *item)
  */
 int CAquarium::CountBetas()
 {
-    int count = 0;
+    // Create the visitor object
+    CCountFishVisitor visitor;
     
-    for(list<CItem *>::iterator i=mItems.begin(); i != mItems.end(); i++)
-    {
-        if((*i)->IsBetaFish())
-        {
-            count++;
-        }
-    }
+    // Call accept for the aquarium
+    Accept(&visitor);
     
-    return count;
+    // Get the number of beta fish
+    return visitor.GetNumBeta();
 }
 
 /*! \brief Save the aquarium as a .aqua XML file.
@@ -450,4 +448,17 @@ void CAquarium::FeedFish()
 void CAquarium::CleanTank()
 {
     mCleanTimer = 0;
+}
+
+/*! \brief Accept an item visitor
+ *
+ * \param visitor The item visitor to accept
+ */
+void CAquarium::Accept(CItemVisitor *visitor)
+{
+    for(list<CItem *>::iterator i=mItems.begin(); i != mItems.end(); i++)
+    {
+        CItem *item = *i;
+        item->Accept(visitor);
+    }
 }

@@ -52,3 +52,11 @@ CItem *CDecorTreasure::Clone()
 {
     return new CDecorTreasure(*this);
 }
+
+/*! \brief Accepts an item visitor
+ *
+ * \param visitor The item visitor to accept
+ */
+void CDecorTreasure::Accept(CItemVisitor* visitor)
+{
+}

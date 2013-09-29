@@ -13,6 +13,7 @@
 
 #include <wx/wx.h>
 #include <wx/xml/xml.h>
+#include "CItemVisitor.h"
 
 class CAquarium;
 
@@ -66,6 +67,8 @@ public:
         
     int GetWidth() {return mItemBitmap->GetWidth();}
     int GetHeight() {return mItemBitmap->GetHeight();}
+    
+    virtual void Accept(CItemVisitor *) = 0;
     
 protected:
     CItem(CAquarium *aquarium, const std::wstring &filename);

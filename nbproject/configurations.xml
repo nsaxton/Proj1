@@ -30,6 +30,8 @@
     <itemPath>CAquarium.h</itemPath>
     <itemPath>CCatfish.cpp</itemPath>
     <itemPath>CCatfish.h</itemPath>
+    <itemPath>CCountFishVisitor.cpp</itemPath>
+    <itemPath>CCountFishVisitor.h</itemPath>
     <itemPath>CDecorBubbleTreasure.cpp</itemPath>
     <itemPath>CDecorBubbleTreasure.h</itemPath>
     <itemPath>CDecorTreasure.cpp</itemPath>
@@ -40,10 +42,14 @@
     <itemPath>CFishBeta.h</itemPath>
     <itemPath>CFishSparty.cpp</itemPath>
     <itemPath>CFishSparty.h</itemPath>
+    <itemPath>CFishVisitor.cpp</itemPath>
+    <itemPath>CFishVisitor.h</itemPath>
     <itemPath>CFrame.cpp</itemPath>
     <itemPath>CFrame.h</itemPath>
     <itemPath>CItem.cpp</itemPath>
     <itemPath>CItem.h</itemPath>
+    <itemPath>CItemVisitor.cpp</itemPath>
+    <itemPath>CItemVisitor.h</itemPath>
     <itemPath>CReporter.cpp</itemPath>
     <itemPath>CReporter.h</itemPath>
   </logicalFolder>
@@ -76,6 +82,10 @@
       </item>
       <item path="CCatfish.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CCountFishVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CCountFishVisitor.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CDecorBubbleTreasure.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CDecorBubbleTreasure.h" ex="false" tool="3" flavor2="0">
@@ -96,6 +106,10 @@
       </item>
       <item path="CFishSparty.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CFishVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CFishVisitor.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CFrame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CFrame.h" ex="false" tool="3" flavor2="0">
@@ -103,6 +117,10 @@
       <item path="CItem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CItem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CItemVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CItemVisitor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="CReporter.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -142,6 +160,10 @@
       </item>
       <item path="CCatfish.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CCountFishVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CCountFishVisitor.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CDecorBubbleTreasure.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CDecorBubbleTreasure.h" ex="false" tool="3" flavor2="0">
@@ -162,6 +184,10 @@
       </item>
       <item path="CFishSparty.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="CFishVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CFishVisitor.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="CFrame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CFrame.h" ex="false" tool="3" flavor2="0">
@@ -169,6 +195,10 @@
       <item path="CItem.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="CItem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="CItemVisitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CItemVisitor.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="CReporter.cpp" ex="false" tool="1" flavor2="0">
       </item>

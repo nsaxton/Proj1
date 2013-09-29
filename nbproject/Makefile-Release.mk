@@ -38,13 +38,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/CApp.o \
 	${OBJECTDIR}/CAquarium.o \
 	${OBJECTDIR}/CCatfish.o \
+	${OBJECTDIR}/CCountFishVisitor.o \
 	${OBJECTDIR}/CDecorBubbleTreasure.o \
 	${OBJECTDIR}/CDecorTreasure.o \
 	${OBJECTDIR}/CFish.o \
 	${OBJECTDIR}/CFishBeta.o \
 	${OBJECTDIR}/CFishSparty.o \
+	${OBJECTDIR}/CFishVisitor.o \
 	${OBJECTDIR}/CFrame.o \
 	${OBJECTDIR}/CItem.o \
+	${OBJECTDIR}/CItemVisitor.o \
 	${OBJECTDIR}/CReporter.o
 
 
@@ -66,11 +69,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proj1
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proj1: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proj1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/CApp.o: CApp.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -86,6 +89,11 @@ ${OBJECTDIR}/CCatfish.o: CCatfish.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CCatfish.o CCatfish.cpp
+
+${OBJECTDIR}/CCountFishVisitor.o: CCountFishVisitor.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CCountFishVisitor.o CCountFishVisitor.cpp
 
 ${OBJECTDIR}/CDecorBubbleTreasure.o: CDecorBubbleTreasure.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -112,6 +120,11 @@ ${OBJECTDIR}/CFishSparty.o: CFishSparty.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CFishSparty.o CFishSparty.cpp
 
+${OBJECTDIR}/CFishVisitor.o: CFishVisitor.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CFishVisitor.o CFishVisitor.cpp
+
 ${OBJECTDIR}/CFrame.o: CFrame.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -121,6 +134,11 @@ ${OBJECTDIR}/CItem.o: CItem.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CItem.o CItem.cpp
+
+${OBJECTDIR}/CItemVisitor.o: CItemVisitor.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/CItemVisitor.o CItemVisitor.cpp
 
 ${OBJECTDIR}/CReporter.o: CReporter.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -133,7 +151,7 @@ ${OBJECTDIR}/CReporter.o: CReporter.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/trunk
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/proj1
 
 # Subprojects
 .clean-subprojects:

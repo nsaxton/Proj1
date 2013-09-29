@@ -29,6 +29,8 @@ public:
     virtual wxXmlNode *XmlSave();
     
     virtual CItem *Clone();
+    
+    virtual void Accept(CItemVisitor *visitor);
 
         
 private:

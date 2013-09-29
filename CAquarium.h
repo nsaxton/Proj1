@@ -18,6 +18,7 @@
 #include <wx/xml/xml.h>
 
 #include "CItem.h"
+#include "CItemVisitor.h"
 
 //! Class describing the aquarium
 class CAquarium
@@ -62,6 +63,8 @@ public:
     /*! \brief Feeding the fish, resetting hunger timer
      */
     void CleanTank();
+    
+    void Accept(CItemVisitor *visitor);
     
 private:
     wxBitmap mBackground;       //!< Background image to use

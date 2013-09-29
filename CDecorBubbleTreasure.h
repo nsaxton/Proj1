@@ -30,6 +30,8 @@ public:
     
     virtual CItem *Clone();
     void Update(double elapsed);
+    
+    virtual void Accept(CItemVisitor *visitor);
         
 private:
     //! Default constructor (disabled)

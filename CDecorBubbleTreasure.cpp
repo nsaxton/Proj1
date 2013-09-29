@@ -70,3 +70,11 @@ void CDecorBubbleTreasure::Update(double elapsed)
         
     }*/
 }
+
+/*! \brief Accepts an item visitor
+ *
+ * \param visitor The item visitor to accept
+ */
+void CDecorBubbleTreasure::Accept(CItemVisitor* visitor)
+{
+}

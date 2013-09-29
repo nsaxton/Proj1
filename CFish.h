@@ -15,6 +15,7 @@
 
 #include "CItem.h"
 #include "CAquarium.h"
+#include "CFishVisitor.h"
 
 /*! \brief Base class for a fish
  * This applies to all of the fish, but not the decor
@@ -32,6 +33,8 @@ public:
     virtual void XmlLoad(wxXmlNode *node);
     
     void SetSpeed(double x, double y);
+    
+    virtual void Accept(CItemVisitor *) = 0;
         
 protected:
     CFish(CAquarium *aquarium, const std::wstring &filename);
