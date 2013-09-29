@@ -45,6 +45,8 @@ CAquarium::CAquarium()
     
     mNavActive = false;
     mTrashCanActive = false;
+    mWindowX = 0;
+    mWindowY = 0;
 }
 
 /*! \brief Copy constructor 
@@ -72,7 +74,7 @@ void CAquarium::OnDraw(wxDC& dc)
     dc.SetFont(font);
     dc.SetTextForeground(wxColour(255, 255, 255));
     
-    dc.DrawBitmap(mBackground, -100, 0, true);
+    dc.DrawBitmap(mBackground, mWindowX, mWindowY, true);
     dc.DrawText(L"Under the Sea!", 2, 2);
     dc.DrawText(L"Team Ladyfish!", 350,2);
     

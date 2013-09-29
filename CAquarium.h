@@ -41,6 +41,10 @@ public:
     void Load(const std::wstring &filename);
     void Clear();
     void Update(double elapsed);
+    bool IsNavActive(){return mNavActive;}
+    void SetScrollX(int x){mWindowX = x;}
+    void SetScrollY(int y){mWindowY = y;}
+    
     
     //! \brief Get the width of the aquarium
     //! \returns Aquarium width
@@ -62,6 +66,10 @@ private:
     
     //! bool for navigation setting
     bool mNavActive;
+    
+    int mWindowX;
+    
+    int mWindowY;
     
     //! The image cache
     std::map<std::wstring, wxImage> mImageCache;

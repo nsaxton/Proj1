@@ -222,16 +222,23 @@ void CFrame::OnLeftButtonDown(wxMouseEvent &event)
     if(event.m_x < HandWidth && event.m_y < 250 + HandHeight/2 && event.m_y > 250 - HandHeight/2)
     {   mAquarium.ToggleHand();}
     
-    mGrabbedItem = mAquarium.HitTest(event.m_x, event.m_y);
-    if (mGrabbedItem != NULL) {
-        mAquarium.MoveToFront(mGrabbedItem);
-    }
-    
-    if(event.m_shiftDown)
+    if(mAquarium.IsNavActive())
     {
-        CItem *copy = mGrabbedItem->Clone();
-        mAquarium.AddItem(copy);
-        copy->SetLocation(event.m_x, event.m_y);
+
+    }
+    else
+    {
+        mGrabbedItem = mAquarium.HitTest(event.m_x, event.m_y);
+        if (mGrabbedItem != NULL) {
+            mAquarium.MoveToFront(mGrabbedItem);
+        }
+
+        if(event.m_shiftDown)
+        {
+            CItem *copy = mGrabbedItem->Clone();
+            mAquarium.AddItem(copy);
+            copy->SetLocation(event.m_x, event.m_y);
+        }
     }
 }
 
@@ -243,25 +250,27 @@ void CFrame::OnLeftButtonDown(wxMouseEvent &event)
  */
 void CFrame::OnMouseMove(wxMouseEvent &event)
 {
-    // See if an item is currently being moved by the mouse
-    if (mGrabbedItem != NULL) {
-        // If an item is being moved, we only continue to
-        // move it while the left button is down.
-        if (event.m_leftDown) {
-            mGrabbedItem->SetLocation(event.m_x, event.m_y);
-        }
-        else {
-            if(mAquarium.IsOverTrashcan(event.m_x, event.m_y))
-            {
-                mAquarium.DeleteItem(mGrabbedItem);
+    
+        // See if an item is currently being moved by the mouse
+        if (mGrabbedItem != NULL) {
+            // If an item is being moved, we only continue to
+            // move it while the left button is down.
+            if (event.m_leftDown) {
+                mGrabbedItem->SetLocation(event.m_x, event.m_y);
             }
-            mGrabbedItem = NULL;
+            else {
+                if(mAquarium.IsOverTrashcan(event.m_x, event.m_y))
+                {
+                    mAquarium.DeleteItem(mGrabbedItem);
+                }
+                mGrabbedItem = NULL;
+            }
         }
-
+        
         // Force the screen to redraw
         Refresh();
-    }
 }
+
 
 /*! \brief Counts the number of beta fish in the aquarium
  *
