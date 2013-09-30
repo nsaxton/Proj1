@@ -34,6 +34,15 @@ CAquarium::CAquarium()
 {
     if(!mBackground.LoadFile(L"images/backgroundW.png", wxBITMAP_TYPE_PNG))
         wxMessageBox(L"Failed to open image backgroundW.png");
+        
+    if(!mBackgroundDirty1.LoadFile(L"images/backgroundW1.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image background1.png");
+    
+    if(!mBackgroundDirty2.LoadFile(L"images/backgroundW2.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image background1.png");
+    
+    if(!mBackgroundDirty3.LoadFile(L"images/background3.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image background1.png");
     
     if(!mTrashcan.LoadFile(L"images/trashcan.png", wxBITMAP_TYPE_PNG))
         wxMessageBox(L"Failed to open image trashcan.png");
@@ -91,7 +100,24 @@ void CAquarium::OnDraw(wxDC& dc)
     {
         mWindowY = -50;
     }
-    dc.DrawBitmap(mBackground, mWindowX, mWindowY, true);
+    
+    // Determine which background to load
+    if(mCleanTimer < 15)
+     {
+        dc.DrawBitmap(mBackground, mWindowX, mWindowY, true);
+     }
+     else if(mCleanTimer < 30)
+     {
+        dc.DrawBitmap(mBackgroundDirty1, mWindowX, mWindowY, true);
+     }
+     else if (mCleanTimer < 45)
+     {
+        dc.DrawBitmap(mBackgroundDirty2,  mWindowX, mWindowY, true);
+     }
+     else
+     {
+        dc.DrawBitmap(mBackgroundDirty3, mWindowX, mWindowY, true);
+     }
     dc.DrawText(L"Under the Sea!", 2, 2);
     dc.DrawText(L"Team Ladyfish!", 350,2);
     
@@ -103,13 +129,22 @@ void CAquarium::OnDraw(wxDC& dc)
     else
         dc.DrawBitmap(mNormNav,0,250);
     
-    
-    
-    for(list<CItem *>::iterator t=mItems.begin(); t!=mItems.end(); t++)
-    {
-        CItem *item = *t;
-        item->Draw(dc);
-    }
+    if(mFeedTimer > 30)       // Fish are dead, clear them out
+     {
+        while(!mItems.empty())
+        {
+            delete mItems.front();
+            mItems.pop_front();
+        }
+     }
+     else        // All the fish (and all other items) are good, draw all
+     {
+         for(list<CItem *>::iterator t=mItems.begin(); t!=mItems.end(); t++)
+         {
+             CItem *item = *t;
+             item->Draw(dc);
+         }
+     }
 }
 
 /*! \brief Get an image from the image cache
@@ -392,4 +427,26 @@ void CAquarium::Update(double elapsed)
         CItem *item = *i;
         item->Update(elapsed);
     }
+    mFeedTimer = mFeedTimer + elapsed;
+    mCleanTimer = mCleanTimer + elapsed;
+}
+
+/*! \brief Action for feeding fish
+ * 
+ * \param
+ * \returns
+ */
+void CAquarium::FeedFish()
+{
+    mFeedTimer = 0;
+}
+
+/*! \brief Action for cleaning tank
+ * 
+ * \param
+ * \returns
+ */
+void CAquarium::CleanTank()
+{
+    mCleanTimer = 0;
 }
