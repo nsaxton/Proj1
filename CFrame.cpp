@@ -29,6 +29,8 @@ EVT_MENU(ID_AddCatfish, CFrame::OnAddCatfish)
 EVT_MENU(ID_Trashcan, CFrame::OnToggleTrashcan)
 EVT_MENU(ID_SaveAs, CFrame::OnFileSaveAs)
 EVT_MENU(ID_FileOpen, CFrame::OnFileOpen)
+EVT_MENU(ID_Feed, CFrame::OnFeed)
+EVT_MENU(ID_Clean, CFrame::OnClean)
 EVT_PAINT(CFrame::OnPaint)
 EVT_LEFT_DOWN(CFrame::OnLeftButtonDown)
 EVT_MOTION(CFrame::OnMouseMove)
@@ -85,6 +87,13 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     wxMenu *menuDecor = new wxMenu;
     menuDecor->Append(ID_AddTreasureChest, L"&Treasure Chest");
     menuDecor->Append(ID_AddBubbleTreasureChest, L"&Bubbling Treasure Chest");
+    
+    //
+    // Care menu
+    // 
+    wxMenu *menuCare = new wxMenu;
+    menuCare->Append(ID_Feed, L"&Feed Fish");
+    menuCare->Append(ID_Clean, L"&Clean Tank");
 
     //
     // Menu bar
@@ -94,6 +103,7 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     menuBar->Append(menuFish, L"&Add Fish");
     menuBar->Append(menuCount, L"&Count Fish");
     menuBar->Append(menuDecor, L"Add &Decor");
+    menuBar->Append(menuCare, L"&Care");
 
     SetMenuBar(menuBar);
 
@@ -357,4 +367,24 @@ void CFrame::OnFileOpen(wxCommandEvent& event)
 void CFrame::OnTimer(wxTimerEvent &event)
 {
     Refresh();
+}
+
+/*! \brief Feeds the fish, so they don't die of hunger
+ *
+ * \param 
+ * \returns 
+ */
+void CFrame::OnFeed(wxCommandEvent& event)
+{
+    
+}
+
+/*! \brief Cleans the tank, to avoid the dirty background images
+ *
+ * \param 
+ * \returns 
+ */
+void CFrame::OnClean(wxCommandEvent& event)
+{
+    
 }
