@@ -390,7 +390,7 @@ void CFrame::OnTimer(wxTimerEvent &event)
  */
 void CFrame::OnFeed(wxCommandEvent& event)
 {
-    
+    mAquarium.FeedFish();
 }
 
 /*! \brief Cleans the tank, to avoid the dirty background images
@@ -400,5 +400,5 @@ void CFrame::OnFeed(wxCommandEvent& event)
  */
 void CFrame::OnClean(wxCommandEvent& event)
 {
-    
+    mAquarium.CleanTank();
 }
