@@ -36,13 +36,13 @@ CAquarium::CAquarium()
         wxMessageBox(L"Failed to open image backgroundW.png");
         
     if(!mBackgroundDirty1.LoadFile(L"images/backgroundW1.png", wxBITMAP_TYPE_PNG))
-        wxMessageBox(L"Failed to open image background1.png");
+        wxMessageBox(L"Failed to open image backgroundW1.png");
     
     if(!mBackgroundDirty2.LoadFile(L"images/backgroundW2.png", wxBITMAP_TYPE_PNG))
-        wxMessageBox(L"Failed to open image background1.png");
+        wxMessageBox(L"Failed to open image backgroundW2.png");
     
-    if(!mBackgroundDirty3.LoadFile(L"images/background3.png", wxBITMAP_TYPE_PNG))
-        wxMessageBox(L"Failed to open image background1.png");
+    if(!mBackgroundDirty3.LoadFile(L"images/backgroundW3.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image backgroundW3.png");
     
     if(!mTrashcan.LoadFile(L"images/trashcan.png", wxBITMAP_TYPE_PNG))
         wxMessageBox(L"Failed to open image trashcan.png");
