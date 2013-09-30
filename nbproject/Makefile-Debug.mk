@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/CApp.o \
 	${OBJECTDIR}/CAquarium.o \
 	${OBJECTDIR}/CCatfish.o \
+	${OBJECTDIR}/CDecorBubbleTreasure.o \
 	${OBJECTDIR}/CDecorTreasure.o \
 	${OBJECTDIR}/CFish.o \
 	${OBJECTDIR}/CFishBeta.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/CCatfish.o: CCatfish.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g `wx-config --cppflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/CCatfish.o CCatfish.cpp
+
+${OBJECTDIR}/CDecorBubbleTreasure.o: CDecorBubbleTreasure.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g `wx-config --cppflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/CDecorBubbleTreasure.o CDecorBubbleTreasure.cpp
 
 ${OBJECTDIR}/CDecorTreasure.o: CDecorTreasure.cpp 
 	${MKDIR} -p ${OBJECTDIR}

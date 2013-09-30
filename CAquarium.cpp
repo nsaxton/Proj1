@@ -10,6 +10,7 @@
 #include "CFishBeta.h"
 #include "CFishSparty.h"
 #include "CDecorTreasure.h"
+#include "CDecorBubbleTreasure.h"
 #include "CCatfish.h"
 #include "CAquarium.h"
 #include "CFish.h"

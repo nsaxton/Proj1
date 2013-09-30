@@ -9,6 +9,7 @@
 #include "CFrame.h"
 #include "CFishBeta.h"
 #include "CDecorTreasure.h"
+#include "CDecorBubbleTreasure.h"
 #include "CFishSparty.h"
 #include "CCatfish.h"
 
@@ -22,6 +23,7 @@ EVT_MENU(ID_About, CFrame::OnAbout)
 EVT_MENU(ID_CountBetas, CFrame::OnCountBetas)
 EVT_MENU(ID_AddFishBeta, CFrame::OnAddFishBeta)
 EVT_MENU(ID_AddTreasureChest, CFrame::OnAddTreasureChest)
+EVT_MENU(ID_AddBubbleTreasureChest, CFrame::OnAddBubbleTreasureChest)
 EVT_MENU(ID_AddFishSparty, CFrame::OnAddFishSparty)
 EVT_MENU(ID_AddCatfish, CFrame::OnAddCatfish)
 EVT_MENU(ID_Trashcan, CFrame::OnToggleTrashcan)
@@ -82,6 +84,7 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     //
     wxMenu *menuDecor = new wxMenu;
     menuDecor->Append(ID_AddTreasureChest, L"&Treasure Chest");
+    menuDecor->Append(ID_AddBubbleTreasureChest, L"&Bubbling Treasure Chest");
 
     //
     // Menu bar
@@ -191,6 +194,16 @@ void CFrame::OnAddTreasureChest(wxCommandEvent& event)
     Refresh();
 }
 
+/*! \brief Add Decor/Treasure Chest menu option handler
+ *
+ * \param event An object that describes the event.
+ */
+void CFrame::OnAddBubbleTreasureChest(wxCommandEvent& event)
+{
+    mAquarium.AddItem(new CDecorBubbleTreasure(&mAquarium));
+    Refresh();
+}
+
 /*! \brief Add Fish/Sparty menu option handler
  *
  * \param event An object that describes the event.
@@ -219,8 +232,11 @@ void CFrame::OnToggleTrashcan(wxCommandEvent& event)
  */
 void CFrame::OnLeftButtonDown(wxMouseEvent &event)
 {
-    if(event.m_x < HandWidth && event.m_y < 250 + HandHeight/2 && event.m_y > 250 - HandHeight/2)
-    {   mAquarium.ToggleHand();}
+    if(event.m_x < HandWidth && event.m_y > 250 && event.m_y < 250 + HandHeight)
+    {   
+        mAquarium.ToggleHand();
+        Refresh();
+    }
     
     if(mAquarium.IsNavActive())
     {

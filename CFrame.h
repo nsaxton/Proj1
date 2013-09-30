@@ -21,9 +21,9 @@ public:
     CFrame(const CFrame& orig);
     virtual ~CFrame();
             
-    enum Ids {ID_Exit=1, ID_About, ID_AddFishBeta, ID_AddTreasureChest,
+    enum Ids {ID_Exit=1, ID_About, ID_AddFishBeta, ID_AddTreasureChest, 
                 ID_AddFishSparty, ID_Trashcan, ID_CountBetas, ID_AddCatfish,
-                ID_SaveAs, ID_FileOpen, ID_Timer};
+                ID_SaveAs, ID_FileOpen, ID_Timer, ID_AddBubbleTreasureChest};
     
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
@@ -36,6 +36,7 @@ public:
     void OnLeftButtonDown(wxMouseEvent &event);
     void OnMouseMove(wxMouseEvent &event);
     void OnAddTreasureChest(wxCommandEvent& event);
+    void OnAddBubbleTreasureChest(wxCommandEvent& event);
     void OnFileSaveAs(wxCommandEvent& event);
     void OnFileOpen(wxCommandEvent& event);
     void OnTimer(wxTimerEvent& event);
