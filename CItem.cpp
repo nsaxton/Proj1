@@ -6,6 +6,13 @@
 
 #include "CItem.h"
 #include "CAquarium.h"
+using namespace std;
+
+const wstring DecorBubbleTreasureImageName1(L"chest1.png");
+const wstring DecorBubbleTreasureImageName2(L"chest2.png");
+const wstring DecorBubbleTreasureImageName3(L"chest3.png");
+const wstring DecorBubbleTreasureImageName4(L"chest4.png");
+const wstring DecorBubbleTreasureImageName5(L"chest5.png");
 
 /*! \brief Constructor
  *

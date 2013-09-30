@@ -59,6 +59,9 @@ private:
     
     //! The current Unix time
     long long mCurrentTime;
+    
+    int mOrigX;
+    int mOrigY;
 };
 
 #endif	/* CFRAME_H */

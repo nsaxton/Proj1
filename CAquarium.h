@@ -42,8 +42,8 @@ public:
     void Clear();
     void Update(double elapsed);
     bool IsNavActive(){return mNavActive;}
-    void SetScrollX(int x){mWindowX = x;}
-    void SetScrollY(int y){mWindowY = y;}
+    void SetScrollX(int x){mWindowX += x;}
+    void SetScrollY(int y){mWindowY += y;}
     
     
     //! \brief Get the width of the aquarium

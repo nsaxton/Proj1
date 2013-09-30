@@ -250,7 +250,8 @@ void CFrame::OnLeftButtonDown(wxMouseEvent &event)
     
     if(mAquarium.IsNavActive())
     {
-
+        mOrigX = event.m_x;
+        mOrigY = event.m_y;
     }
     else
     {
@@ -277,24 +278,37 @@ void CFrame::OnLeftButtonDown(wxMouseEvent &event)
 void CFrame::OnMouseMove(wxMouseEvent &event)
 {
     
-        // See if an item is currently being moved by the mouse
-        if (mGrabbedItem != NULL) {
-            // If an item is being moved, we only continue to
-            // move it while the left button is down.
-            if (event.m_leftDown) {
-                mGrabbedItem->SetLocation(event.m_x, event.m_y);
-            }
-            else {
-                if(mAquarium.IsOverTrashcan(event.m_x, event.m_y))
-                {
-                    mAquarium.DeleteItem(mGrabbedItem);
-                }
-                mGrabbedItem = NULL;
-            }
-        }
+    if(mAquarium.IsNavActive())
+    {
         
-        // Force the screen to redraw
-        Refresh();
+        int x, y;
+        if(event.m_leftDown){
+            y = event.m_y;
+            x = event.m_x;
+        
+            mAquarium.SetScrollX(-mOrigX + x);
+            mAquarium.SetScrollY(-mOrigY + y);
+        }
+    }
+    
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedItem != NULL) {
+        // If an item is being moved, we only continue to
+        // move it while the left button is down.
+        if (event.m_leftDown) {
+            mGrabbedItem->SetLocation(event.m_x, event.m_y);
+        }
+        else {
+            if(mAquarium.IsOverTrashcan(event.m_x, event.m_y))
+            {
+                mAquarium.DeleteItem(mGrabbedItem);
+            }
+            mGrabbedItem = NULL;
+        }
+    }
+
+    // Force the screen to redraw
+    Refresh();
 }
 
 

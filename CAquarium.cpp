@@ -74,7 +74,23 @@ void CAquarium::OnDraw(wxDC& dc)
                 wxFONTWEIGHT_NORMAL, false);
     dc.SetFont(font);
     dc.SetTextForeground(wxColour(255, 255, 255));
+    if(mWindowX < -1560)
+    {
+        mWindowX = -1535;
+    }
+    else if(mWindowX > 0)
+    {
+        mWindowX =0;
+    }
     
+    if(mWindowY > 0)
+    {
+        mWindowY =0;
+    }
+    else if(mWindowY < -50)
+    {
+        mWindowY = -50;
+    }
     dc.DrawBitmap(mBackground, mWindowX, mWindowY, true);
     dc.DrawText(L"Under the Sea!", 2, 2);
     dc.DrawText(L"Team Ladyfish!", 350,2);
@@ -334,6 +350,10 @@ void CAquarium::Load(const std::wstring &filename)
         else if(type == L"sparty-fish")
         {
             item = new CFishSparty(this);
+        }
+        else if(type == L"bubble-treasure-chest")
+        {
+            item = new CDecorBubbleTreasure(this);
         }
         
         if(item != NULL)

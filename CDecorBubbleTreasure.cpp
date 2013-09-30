@@ -43,7 +43,7 @@ wxXmlNode *CDecorBubbleTreasure::XmlSave()
     // and include common information
     wxXmlNode *node = CItem::XmlSave();
     
-    node->AddAttribute(L"type", L"treasure-chest");
+    node->AddAttribute(L"type", L"bubble-treasure-chest");
     
     return node;
 }
@@ -60,14 +60,13 @@ CItem *CDecorBubbleTreasure::Clone()
 
 void CDecorBubbleTreasure::Update(double elapsed)
 {
-    /*
+    
     mCurTime += elapsed;
     
     int test = mCurTime % 50000;
     
-    if((test > 0 && test < 5000) || (test > 45000))
+    /*if((test < 100) || (test > 45000))
     {
         
     }*/
-        
 }
