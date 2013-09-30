@@ -44,6 +44,7 @@ public:
     bool IsNavActive(){return mNavActive;}
     void SetScrollX(int x){mWindowX += x;}
     void SetScrollY(int y){mWindowY += y;}
+    void FrameHeight(int y){mFrameHeight = y;}
     
     
     //! \brief Get the width of the aquarium
@@ -80,7 +81,7 @@ private:
    
     //! bool for navigation setting
     bool mNavActive;
-    
+    int mFrameHeight;
     int mWindowX;
     
     int mWindowY;

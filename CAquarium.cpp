@@ -124,10 +124,11 @@ void CAquarium::OnDraw(wxDC& dc)
     if(mTrashCanActive)
         dc.DrawBitmap(mTrashcan, 0, 0);
     
+    
     if(mNavActive)
-        dc.DrawBitmap(mScrollNav,0,250);
+        dc.DrawBitmap(mScrollNav,0,mFrameHeight-104);
     else
-        dc.DrawBitmap(mNormNav,0,250);
+        dc.DrawBitmap(mNormNav,0,mFrameHeight-104);
     
     if(mFeedTimer > 30)       // Fish are dead, clear them out
      {

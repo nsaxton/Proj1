@@ -66,7 +66,7 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     wxMenuItem *exitItem = menuFile->Append(ID_Exit, L"E&xit");
     exitItem->SetHelp(L"Exit the program");
     saveItem->SetHelp(L"Save the aquarium's current state");
-
+    
     //
     // Fish menu
     //
@@ -163,6 +163,9 @@ void CFrame::OnPaint(wxPaintEvent &event)
     mCurrentTime = newTime;
     
     mAquarium.Update(elapsed);
+    int x, y;
+    GetSize(&x, &y);
+    mAquarium.FrameHeight(y);
     
     // Create a device context
     wxPaintDC dc(this);
@@ -242,7 +245,9 @@ void CFrame::OnToggleTrashcan(wxCommandEvent& event)
  */
 void CFrame::OnLeftButtonDown(wxMouseEvent &event)
 {
-    if(event.m_x < HandWidth && event.m_y > 250 && event.m_y < 250 + HandHeight)
+    int x, y;
+    GetSize(&x, &y);
+    if(event.m_x < HandWidth && event.m_y > y - 104 && event.m_y < y + HandHeight - 104)
     {   
         mAquarium.ToggleHand();
         Refresh();
