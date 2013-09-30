@@ -68,6 +68,12 @@ public:
     int GetWidth() {return mItemBitmap->GetWidth();}
     int GetHeight() {return mItemBitmap->GetHeight();}
     
+    void SetXOffset(int x){mXOffset = x;}
+    void SetYOffset(int y){mYOffset = y;}
+    
+    int GetXOffset(){return mXOffset;}
+    int GetYOffset(){return mYOffset;}
+    
     virtual void Accept(CItemVisitor *) = 0;
     
 protected:
@@ -87,6 +93,9 @@ private:
     //! Item location in the aquarium
     double mX;     //!< X location for the center of the item
     double mY;     //!< Y location for the center of the item
+    
+    int mXOffset;
+    int mYOffset;
     
     wxImage *mItemImage;        //!< Pointer to the image of the fish
     wxBitmap *mItemBitmap;      //!< Pointer to a bitmap for the fish

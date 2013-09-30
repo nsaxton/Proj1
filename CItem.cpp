@@ -60,8 +60,8 @@ bool CItem::HitTest(int x, int y)
     // Make x and y relative to the top-left corner of the bitmap image
     // Subtracting the center makes x, y relative to the center of the image.
     // Adding half the size makes x, y relative to the top corner of the image
-    x = x - (int)GetX() + wid/2;
-    y = y - (int)GetY() + hit/2;
+    x = x - (int)GetX() + wid/2 - mXOffset;
+    y = y - (int)GetY() + hit/2 - mYOffset;
     
     // Test to see if x, y are in the image
     if(x < 0 || y < 0 || x >= wid || y >= hit)
@@ -82,7 +82,7 @@ void CItem::Draw(wxDC &dc)
 {
     int wid = mItemBitmap->GetWidth();
     int hit = mItemBitmap->GetHeight();
-    dc.DrawBitmap(*mItemBitmap, int(GetX() - wid/2), int(GetY() - hit/2), true);
+    dc.DrawBitmap(*mItemBitmap, int(GetX() - wid/2)+mXOffset, int(GetY() - hit/2)+mYOffset, true);
 }
 
 /*! \brief XML function to save an aquarium item

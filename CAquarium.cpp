@@ -4,7 +4,7 @@
  * \author Nick Saxton
  */
 
-#include <wx-2.9/wx/dc.h>
+#include <wx-2.9/wx/dc.h>double
 #include <sstream>
 
 #include "CFishBeta.h"
@@ -144,6 +144,8 @@ void CAquarium::OnDraw(wxDC& dc)
          for(list<CItem *>::iterator t=mItems.begin(); t!=mItems.end(); t++)
          {
              CItem *item = *t;
+             item->SetXOffset(mWindowX);
+             item->SetYOffset(mWindowY);
              item->Draw(dc);
          }
      }
@@ -424,6 +426,8 @@ void CAquarium::Update(double elapsed)
             i != mItems.end(); i++)
     {
         CItem *item = *i;
+        item->SetXOffset(mWindowX);
+        item->SetYOffset(mWindowY);
         item->Update(elapsed);
     }
     mFeedTimer = mFeedTimer + elapsed;
