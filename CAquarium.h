@@ -54,6 +54,14 @@ public:
     //! \returns Aquarium height
     int GetHeight() const {return mBackground.GetHeight();}
     
+    /*! \brief Feeding the fish, resetting hunger timer
+     */
+    void FeedFish();
+    
+    /*! \brief Feeding the fish, resetting hunger timer
+     */
+    void CleanTank();
+    
 private:
     wxBitmap mBackground;       //!< Background image to use
     wxBitmap mTrashcan;         //!< Trash can image to use
@@ -62,8 +70,14 @@ private:
     
     //! State of the trashcan
     bool mTrashCanActive;
-   
     
+    wxBitmap    mBackgroundDirty1;      //!< 1st (partly) dirty background
+    wxBitmap    mBackgroundDirty2;      //!< 2nd (more) dirty background
+    wxBitmap    mBackgroundDirty3;      //!< 3rd (most) dirty background
+    
+    double mFeedTimer;                   //!< Time since last fed
+    double mCleanTimer;                  //!< Time since last cleaned
+   
     //! bool for navigation setting
     bool mNavActive;
     
