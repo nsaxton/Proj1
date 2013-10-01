@@ -153,3 +153,40 @@ CItem *CItem::Clone()
 {
     
 }
+
+
+void CItem::UpdateChest(int i)
+{
+        // Delete the existing image and bitmap
+    delete mItemImage;
+    delete mItemBitmap;
+    
+    switch (i) {
+    case 1:
+        mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName1);
+        mItemImage = new wxImage(*mItemImageOrig);
+        mItemBitmap = new wxBitmap(*mItemImage);
+        break;
+    case 2:
+        mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName2);
+        mItemImage = new wxImage(*mItemImageOrig);
+        mItemBitmap = new wxBitmap(*mItemImage);
+        break;
+    case 3:
+        mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName3);
+        mItemImage = new wxImage(*mItemImageOrig);
+        mItemBitmap = new wxBitmap(*mItemImage);    
+        break;
+    case 4:
+        mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName4);
+        mItemImage = new wxImage(*mItemImageOrig);
+        mItemBitmap = new wxBitmap(*mItemImage);
+        break;
+    case 5:
+        mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName5);
+        mItemImage = new wxImage(*mItemImageOrig);
+        mItemBitmap = new wxBitmap(*mItemImage);   
+        break;
+    }
+}
+
