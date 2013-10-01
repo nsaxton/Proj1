@@ -138,6 +138,7 @@ void CAquarium::OnDraw(wxDC& dc)
             delete mItems.front();
             mItems.pop_front();
         }
+        mFeedTimer = 0;
      }
      else        // All the fish (and all other items) are good, draw all
      {

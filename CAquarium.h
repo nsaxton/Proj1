@@ -45,6 +45,9 @@ public:
     bool IsNavActive(){return mNavActive;}
     void SetScrollX(int x){mWindowX += x;}
     void SetScrollY(int y){mWindowY += y;}
+    int GetScrollX(){return mWindowX;}
+    int GetScrollY(){return mWindowY;}
+    
     void FrameHeight(int y){mFrameHeight = y;}
     
     

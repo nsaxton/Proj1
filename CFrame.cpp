@@ -303,7 +303,8 @@ void CFrame::OnMouseMove(wxMouseEvent &event)
         // If an item is being moved, we only continue to
         // move it while the left button is down.
         if (event.m_leftDown) {
-            mGrabbedItem->SetLocation(event.m_x, event.m_y);
+            mGrabbedItem->SetLocation(event.m_x - mAquarium.GetScrollX(),
+                                      event.m_y - mAquarium.GetScrollY());
         }
         else {
             if(mAquarium.IsOverTrashcan(event.m_x, event.m_y))
