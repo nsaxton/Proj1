@@ -4,7 +4,7 @@
  * \author Nick Saxton
  */
 
-#include <wx-2.9/wx/dc.h>double
+#include <wx-2.9/wx/dc.h>
 #include <sstream>
 
 #include "CFishBeta.h"
