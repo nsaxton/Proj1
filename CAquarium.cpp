@@ -84,7 +84,7 @@ void CAquarium::OnDraw(wxDC& dc)
                 wxFONTWEIGHT_NORMAL, false);
     dc.SetFont(font);
     dc.SetTextForeground(wxColour(255, 255, 255));
-    if(mWindowX < -1560)
+    if(mWindowX < -1535)
     {
         mWindowX = -1535;
     }
