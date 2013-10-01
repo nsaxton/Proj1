@@ -11,10 +11,7 @@ using namespace std;
 
 //! Fish filename
 const wstring DecorBubbleTreasureImageName1(L"chest1.png");
-const wstring DecorBubbleTreasureImageName2(L"chest2.png");
-const wstring DecorBubbleTreasureImageName3(L"chest3.png");
-const wstring DecorBubbleTreasureImageName4(L"chest4.png");
-const wstring DecorBubbleTreasureImageName5(L"chest5.png");
+
 
 /*! Constructor
  */
@@ -61,14 +58,29 @@ CItem *CDecorBubbleTreasure::Clone()
 void CDecorBubbleTreasure::Update(double elapsed)
 {
     
-    mCurTime += elapsed;
-    
-    int test = mCurTime % 50000;
-    
-    /*if((test < 100) || (test > 45000))
+    mCurTime = mCurTime + elapsed;
+    int test = int(mCurTime) % 50;
+    if(test == 1 || test == 46)
     {
-        
-    }*/
+        UpdateChest(1);
+    }
+    else if(test == 6 || test == 41 )
+    {
+        UpdateChest(2);
+    }
+    else if((test == 11) || test == 36)
+    {
+        UpdateChest(3);
+    }
+    else if((test == 16) || test == 31)
+    {
+        UpdateChest(4);
+    }
+    else if(test == 21)
+    {
+        UpdateChest(5);
+    }
+    
 }
 
 /*! \brief Accepts an item visitor
