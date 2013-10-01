@@ -58,7 +58,7 @@ void CFish::Update(double elapsed)
     SetLocation(GetX() + mSpeedX * elapsed,
                 GetY() + mSpeedY * elapsed);
     
-    if(mSpeedX > 0 && GetX() >= (GetAquarium()->GetWidth()-50-GetWidth()/2 + GetXOffset()))
+    if(mSpeedX > 0 && GetX() >= (GetAquarium()->GetWidth()-50-GetWidth()/2))
     {
         mSpeedX = -mSpeedX;
     }

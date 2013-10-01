@@ -36,7 +36,7 @@ public:
     //! Set the item location
     //! \param x X location
     //! \param y Y location
-    void SetLocation(double x, double y) {mX = x; mY = y;}
+    void SetLocation(double x, double y) {mX = x; mY = y; }
     
     //! Draw this item
     //! \param dc Device context to draw on
