@@ -38,7 +38,7 @@ private:
     CDecorBubbleTreasure();
     
     //! Current Time
-    long long mCurTime;
+    double mCurTime;
 };
 
 #endif	/* CDECORBUBBLETREASURE_H */
