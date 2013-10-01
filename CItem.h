@@ -76,6 +76,8 @@ public:
     
     virtual void Accept(CItemVisitor *) = 0;
     
+    void UpdateChest(int i);
+    
 protected:
     CItem(CAquarium *aquarium, const std::wstring &filename);
     CItem(const CItem &original);
