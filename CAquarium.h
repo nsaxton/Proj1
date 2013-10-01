@@ -66,6 +66,16 @@ public:
     
     void Accept(CItemVisitor *visitor);
     
+    /*! \brief Get the time since the fish were fed
+     * \returns Time since last fed
+     */
+    double TimeSinceFed() {return mFeedTimer;}
+    
+    /*! \brief Get the time since the aquarium was cleaned
+     * \returns Time since last cleaned
+     */
+    double TimeSinceCleaned() {return mCleanTimer;}
+    
 private:
     wxBitmap mBackground;       //!< Background image to use
     wxBitmap mTrashcan;         //!< Trash can image to use

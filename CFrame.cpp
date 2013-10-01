@@ -12,10 +12,12 @@
 #include "CDecorBubbleTreasure.h"
 #include "CFishSparty.h"
 #include "CCatfish.h"
+#include "CCountFishVisitor.h"
 
 using namespace std;
 
 const int FrameDuration = 30; //! Milliseconds
+const int ReportInterval = 30000; //! Milliseconds
 
 BEGIN_EVENT_TABLE(CFrame, wxFrame)
 EVT_MENU(ID_Exit, CFrame::OnExit)
@@ -36,6 +38,7 @@ EVT_LEFT_DOWN(CFrame::OnLeftButtonDown)
 EVT_MOTION(CFrame::OnMouseMove)
 EVT_LEFT_UP(CFrame::OnMouseMove)
 EVT_TIMER(ID_Timer, CFrame::OnTimer)
+EVT_TIMER(ID_ReportTimer, CFrame::OnReport)
 END_EVENT_TABLE()
 
 
@@ -51,7 +54,8 @@ const int HandHeight = 59;
  */
 CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
                            wxPoint(20, 20), wxSize(1024, 800)),
-                           mTimer(this, ID_Timer)
+                           mTimer(this, ID_Timer), 
+                           mReportTimer(this, ID_ReportTimer)
 {
     //
     // File menu
@@ -119,6 +123,8 @@ CFrame::CFrame() : wxFrame(NULL, -1, L"wxWidgets Application",
     mTimer.Start(FrameDuration);
     
     mReporter = new CReporter(this);
+    
+    mReportTimer.Start(ReportInterval);
 }
 
 CFrame::CFrame(const CFrame& orig)
@@ -408,4 +414,63 @@ void CFrame::OnFeed(wxCommandEvent& event)
 void CFrame::OnClean(wxCommandEvent& event)
 {
     mAquarium.CleanTank();
+}
+
+/*! \brief Generates a report on the state of the aquarium every 30 seconds
+ *
+ * \param event The timer event
+ */
+void CFrame::OnReport(wxTimerEvent &event)
+{
+    // How many fish of each type?
+    CCountFishVisitor visitor;
+    
+    mAquarium.Accept(&visitor);
+    
+    wstringstream betaStr;
+    wstringstream catStr;
+    wstringstream spartyStr;
+    
+    int numBetas = visitor.GetNumBeta();
+    int numCatfish = visitor.GetNumCatfish();
+    int numSparty = visitor.GetNumSparty();
+   
+    betaStr << L"Beta Fish: " << numBetas << ends;
+    
+    mReporter->Report(betaStr.str().c_str());
+    
+    catStr << L"Catfish: " << numCatfish << ends;
+    
+    mReporter->Report(catStr.str().c_str());
+    
+    spartyStr << L"Sparty Fish: " << numSparty << ends;
+    
+    mReporter->Report(spartyStr.str().c_str());
+    
+    // How dirty is aquarium?
+    double dirtyTime = mAquarium.TimeSinceCleaned();
+    
+    wstring dirtyStr = L"The tank is: ";
+    
+    if(dirtyTime < 15)
+        dirtyStr += L"Clean";
+    else if(dirtyTime < 30)
+        dirtyStr += L"Dirty";
+    else if(dirtyTime < 60)
+        dirtyStr += L"Dirtier";
+    else
+        dirtyStr += L"Filthy";
+    
+    mReporter->Report(dirtyStr.c_str());
+    
+    // How long since fed?
+    wstringstream foodStr;
+    
+    int foodTime = mAquarium.TimeSinceFed();
+    
+    foodStr << L"Time since last fed: " << foodTime << L" seconds" << ends;
+    
+    mReporter->Report(foodStr.str().c_str());
+    
+    mReporter->Report(L"----------------------");
 }

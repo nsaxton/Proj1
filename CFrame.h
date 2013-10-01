@@ -25,7 +25,7 @@ public:
     enum Ids {ID_Exit=1, ID_About, ID_AddFishBeta, ID_AddTreasureChest, 
                 ID_AddFishSparty, ID_Trashcan, ID_CountBetas, ID_AddCatfish,
                 ID_SaveAs, ID_FileOpen, ID_Timer, ID_AddBubbleTreasureChest,
-                ID_Feed, ID_Clean};
+                ID_Feed, ID_Clean, ID_ReportTimer};
     
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
@@ -44,6 +44,7 @@ public:
     void OnTimer(wxTimerEvent& event);
     void OnFeed(wxCommandEvent& event);
     void OnClean(wxCommandEvent& event);
+    void OnReport(wxTimerEvent& event);
     
     
     DECLARE_EVENT_TABLE()
@@ -66,6 +67,9 @@ private:
     
     //! A reporter window
     CReporter *mReporter;
+    
+    //! A timer for reporting
+    wxTimer mReportTimer;
 };
 
 #endif	/* CFRAME_H */
