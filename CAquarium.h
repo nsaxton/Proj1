@@ -78,16 +78,22 @@ public:
      * \returns Time since last cleaned
      */
     double TimeSinceCleaned() {return mCleanTimer;}
+    void SetBubbleActive(bool i) { mBubbleActive = i;}
+    void SetBubbleX(double i) { mBubbleX = i;}
+    void SetBubbleY(double i) { mBubbleY = i;}
     
 private:
     wxBitmap mBackground;       //!< Background image to use
     wxBitmap mTrashcan;         //!< Trash can image to use
     wxBitmap mNormNav;         //!< normal navigation image to use
     wxBitmap mScrollNav;         //!< scrolling hand image to use
-    
+    wxBitmap mBubbles;          //!<bubble image to use 
     //! State of the trashcan
     bool mTrashCanActive;
-    
+    double mElapsed;
+    double mBubbleY;
+    bool mBubbleActive;
+    double mBubbleX;
     wxBitmap    mBackgroundDirty1;      //!< 1st (partly) dirty background
     wxBitmap    mBackgroundDirty2;      //!< 2nd (more) dirty background
     wxBitmap    mBackgroundDirty3;      //!< 3rd (most) dirty background

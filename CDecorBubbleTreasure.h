@@ -14,6 +14,7 @@
 #include <string>
 
 #include "CItem.h"
+#include "CAquarium.h"
 
 //! Class that implements an opening treasure chest decor item
 class CDecorBubbleTreasure : public CItem

@@ -73,7 +73,7 @@ public:
     
     int GetXOffset(){return mXOffset;}
     int GetYOffset(){return mYOffset;}
-    
+    void SetBubbles(double x, double y);
     virtual void Accept(CItemVisitor *) = 0;
     
     void UpdateChest(int i);

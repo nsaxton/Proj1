@@ -185,8 +185,14 @@ void CItem::UpdateChest(int i)
     case 5:
         mItemImageOrig = mAquarium->GetCachedImage(DecorBubbleTreasureImageName5);
         mItemImage = new wxImage(*mItemImageOrig);
-        mItemBitmap = new wxBitmap(*mItemImage);   
+        mItemBitmap = new wxBitmap(*mItemImage);  
         break;
     }
 }
 
+void CItem::SetBubbles(double x, double y)
+{
+    mAquarium->SetBubbleActive(true);
+    mAquarium->SetBubbleX(x);
+    mAquarium->SetBubbleY(y-100);
+}

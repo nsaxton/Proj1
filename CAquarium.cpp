@@ -53,9 +53,14 @@ CAquarium::CAquarium()
     
     if(!mScrollNav.LoadFile(L"images/nav2.png", wxBITMAP_TYPE_PNG))
         wxMessageBox(L"Failed to open image nav2.png");
+
+    if(!mBubbles.LoadFile(L"images/airbubbles.png", wxBITMAP_TYPE_PNG))
+        wxMessageBox(L"Failed to open image airbubbles.png");
+    
     
     mNavActive = false;
     mTrashCanActive = false;
+    mBubbleActive = false;
     mWindowX = 0;
     mWindowY = 0;
 }
@@ -150,6 +155,16 @@ void CAquarium::OnDraw(wxDC& dc)
              item->Draw(dc);
          }
      }
+     if(mBubbleActive)
+     {   
+         dc.DrawBitmap(mBubbles, mBubbleX + mWindowX, mBubbleY + mWindowY);
+         mBubbleY -= mElapsed * 50;  
+         if(mBubbleY < 2)
+         {
+             mBubbleActive = !mBubbleActive;
+         } 
+     }
+     
 }
 
 /*! \brief Get an image from the image cache
@@ -423,6 +438,7 @@ void CAquarium::Clear()
  */
 void CAquarium::Update(double elapsed)
 {
+    mElapsed = elapsed;
     for(list<CItem *>::iterator i=mItems.begin();
             i != mItems.end(); i++)
     {

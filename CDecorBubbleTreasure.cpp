@@ -79,6 +79,7 @@ void CDecorBubbleTreasure::Update(double elapsed)
     else if(test == 21)
     {
         UpdateChest(5);
+        SetBubbles(GetX(),GetY());
     }
     
 }
